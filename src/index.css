@@ -1,0 +1,22 @@
+:root {  
+  color:#242424;
+  /* background-color: #fff; */
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #888 100%);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Apply smooth scrolling behavior to all scrolling boxes */
+scroll-behavior: smooth;
+
+}
+.MuiPaper-root {
+  background-color: transparent !important;
+}
+
+body {
+  padding: 3%;
+  margin: auto;
+}
+
+

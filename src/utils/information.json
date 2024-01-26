@@ -1,0 +1,104 @@
+{
+    "basic": {
+        "name": "Muhammad Sharjeel Baig",
+        "designation": "Software Engineer",
+        "profileimage":"./assets/images/profile/profileimage.svg"
+    },
+    "contact": {
+        "gmail": "dr.sharjeel.6@gmail.com",
+        "linkedin": "linkedin.com/sharjeelbaig/",
+        "phone": "+92 343 2595 361",
+        "github": "github.com/sharjeelbaig",
+        "address": "Gulistan-e-johar, block 12, Farhan Classic Apartments Flat # A-604",
+        "twitter/X":"twitter.com/@m_sharjeel_baig"
+    },
+    "description": {
+        "about": "I am a dedicated full-stack software developer with a passion for crafting innovative solutions. My journey in the world of technology is driven by a relentless pursuit of excellence.",
+        "skills": [
+            {
+                "logo": "./assets/images/skills/react.svg",
+                "name": "Reactjs"
+            },
+            {
+                "logo": "./assets/images/skills/node.svg",
+                "name": "Nodejs"
+            },
+            {
+                "logo": "./assets/images/skills/express.svg",
+                "name": "Expressjs"
+            },
+            {
+                "logo": "./assets/images/skills/postgres.svg",
+                "name": "PostgreSql"
+            },
+            {
+                "logo": "./assets/images/skills/next.svg",
+                "name": "Nextjs"
+            },
+            {
+                "logo": "./assets/images/skills/ecmascript6.svg",
+                "name": "Javascript/es6"
+            },
+            {
+                "logo": "./assets/images/skills/typescript.svg",
+                "name": "Typescript"
+            },
+            {
+                "logo": "./assets/images/skills/reactnative.svg",
+                "name": "React Native"
+            }
+        ]
+    },
+    "background": {
+        "education": {
+            "title": "Bachelor of computer engineering",
+            "period": "2021 - 2027(expected)",
+            "institution": "Bahria University",
+            "logo":"./assets/images/education/bahria.svg"
+        },
+        "experience": {
+            "company": "Technologia Solutions LLC.",
+            "period": "from December 2022 to present",
+            "logo":"./assets/images/experience/technologia.svg"
+        }
+    },
+    "projects": [
+        {
+            "title": "Rankify-ai",
+            "description": "Rankify AI, a project I contributed to at Technologia Solutions LLC, is a powerful tool for content creation. This AI-driven platform caters to a wide audience, from solo writers to large teams. It seamlessly integrates with popular platforms like WordPress and Shopify, streamlining the content creation and publishing process. With a focus on generating undetectable and human-like content, Rankify AI empowers users to enhance their online presence.",
+            "image": "./assets/images/projects/rankify.svg",
+            "demonstration-link": "https://rankifyai.co/",
+            "classification": "Professional"
+        },
+        {
+            "title": "Edaly",
+            "description": "Edaly, a project I contributed to at Technologia Solutions LLC, is a platform to connect and educate kids throughout the world securely and reliably with AI",
+            "image": "./assets/images/projects/edaly.svg",
+            "demonstration-link": "https://edaly.co/",
+            "classification": "Professional"
+        },
+        {
+            "title": "Shazi-Ide",
+            "description": "A Javascript Sandbox project to test & learn javascript skills. I developed it for learning purposes. It is a simple javascript sandbox where you can write javascript code and see the output in the console.",
+            "image": "./assets/images/projects/shazi-ide.svg",
+            "demonstration-link": "https://shazi-ide.vercel.app/",
+            "repo-link": "https://github.com/Sharjeelbaig/shaziIde",
+            "classification": "Learning"
+        },
+        {
+            "title": "codelinea",
+            "description": "A simple AI project to understand codes. I developed it for learning purposes. you have to provide a code snippet and it will tell you what it does.",
+            "image": "./assets/images/projects/codelinea.svg",
+            "demonstration-link": "https://codelinea.web.app/",
+            "repo-link": "https://github.com/Sharjeelbaig/codelinea",
+            "classification": "Learning"
+        },
+        {
+            "title": "party-chat",
+            "description": "A chat application developed using jframe and ms access. It is not a real world project as I developed it for practice purpose as my university project-assignment.",
+            "image": "./assets/images/projects/party-chat.svg",
+            "repo-link": "https://github.com/Sharjeelbaig/Party-Chat",
+            "classification": "Academic"
+        }
+    ]
+}
