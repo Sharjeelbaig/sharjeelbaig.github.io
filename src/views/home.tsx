@@ -1,10 +1,12 @@
-import { Grid, Paper, Typography, Avatar, Box, Button, Divider } from '@mui/material';
+import { Grid, Paper, Typography, Avatar, Box, Button, Divider, TextField } from '@mui/material';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import PhoneIcon from '@mui/icons-material/Phone';
-import { Place, X } from '@mui/icons-material';
+import { DocumentScanner, Email, Place, X } from '@mui/icons-material';
 import Header from '../components/header/Header';
+import { useTheme } from '@mui/material';
+import emailjs from '@emailjs/browser';
 
 import { useEffect } from 'react';
 
@@ -64,34 +66,49 @@ interface JSONData {
 }
 
 const Home = ({ data }: { data: JSONData }) => {
+    const theme = useTheme();
     const { basic, contact, description, background, projects } = data;
     const styles = {
         heading: {
+            color: theme.palette.primary.main,
             fontWeight: 'bold',
         },
-        subHeading: {
+        normal: {
             fontWeight: 'bold',
-            color: '#f50057',
+            color: 'black',
         },
 
     };
+
     useEffect(() => {
-        console.log('service ',import.meta.env.EMAILJS_SERVICE_ID)
+        console.log('service ', import.meta.env.EMAILJS_SERVICE_ID)
     }, [])
+
+    const handleMessageSubmit = (e) => {
+        e.preventDefault();
+        console.log('target ', e.target)
+        emailjs.sendForm(import.meta.env.EMAILJS_SERVICE_ID, import.meta.env.EMAILJS_TEMPLATE_ID, '#contact-form', import.meta.env.EMAILJS_PUBLIC_KEY)
+            .then((result) => {
+                console.log('Email sent successfully:', result.text);
+            }, (error) => {
+                console.error('Error sending email:', error.text);
+            });
+        e.target.reset();
+    };
     return (
         <div>
             <Header />
-            <Box textAlign="center">
+            <Box textAlign="center" >
                 {/* Header Section */}
-                <Box p={2} id="home" mt={8}>
+                <Box p={2} id="home" mt={8} >
 
                     <Avatar alt={basic.name} src={basic.profileimage} sx={{
                         width: "15rem", height: "15rem", margin: 'auto', objectFit: 'cover',
                     }}
                     />
                     <Box sx={{ mt: 5 }}>
-                        <Typography variant="h4" gutterBottom>{basic.name}</Typography>
-                        <Typography variant="subtitle1" sx={{color: 'blue'}}>{basic.designation} </Typography>
+                        <Typography variant="h4" gutterBottom sx={styles.heading}>{basic.name}</Typography>
+                        <Typography variant="subtitle1" sx={styles.normal}>{basic.designation} </Typography>
                     </Box>
                 </Box>
 
@@ -110,12 +127,10 @@ const Home = ({ data }: { data: JSONData }) => {
                                     {key === 'linkedin' && <LinkedInIcon />}
                                     {key === 'phone' && <PhoneIcon />}
                                     {key === 'twitter/X' && <X />}
-                                    <Typography variant="subtitle1" gutterBottom>{key}</Typography>
-                                    {key === 'phone' ? (
-                                        <Typography variant="body1">{value}</Typography>
-                                    ) : (
-                                        <Typography variant="body1">{value}</Typography>
-                                    )}
+                                    <Typography variant="subtitle1" gutterBottom sx={styles.normal}>{key.charAt(0).toUpperCase() + key.slice(1)}</Typography>
+
+                                    <Typography variant="body1">{value}</Typography>
+
 
                                 </Paper>
                             </Grid>
@@ -123,19 +138,33 @@ const Home = ({ data }: { data: JSONData }) => {
                     </Grid>
                 </Box>
 
-                <Divider sx={{ mt: 5 }} />
+                <Divider id="about" sx={{ mt: 5 }} />
 
                 {/* About Me */}
-                <Box id="about" p={2} sx={{ width: '60%', margin: 'auto' }}>
-                    <Typography variant="h5" gutterBottom>About Me</Typography>
+                <Box sx={{
+                    margin: 'auto',
+                    "& > *": {
+                        margin: '1rem auto',
+                        width: '60%',
+
+                    },
+                    py: 6
+                }}>
+                    <Typography variant="h5" gutterBottom sx={styles.heading}>About Me</Typography>
+
                     <Typography variant="body1">{description.about}</Typography>
                 </Box>
 
-                <Divider sx={{ mt: 5 }} />
+                <Divider id="skills" sx={{ mt: 5 }} />
 
                 {/* Skills */}
-                <Box p={2}>
-                    <Typography variant="h5" gutterBottom>Skills</Typography>
+                <Box sx={{
+                    "& > *": {
+                        mt: '0.1rem',
+                    },
+                    py: 6
+                }} >
+                    <Typography variant="h5" gutterBottom sx={styles.heading}>Skills</Typography>
                     <Grid container spacing={2} justifyContent="center" alignItems="center">
                         {description.skills.map((skill, index) => (
                             <Grid key={index} item xs={6} sm={4} md={4} lg={3}>
@@ -151,32 +180,49 @@ const Home = ({ data }: { data: JSONData }) => {
                 <Divider sx={{ mt: 5 }} />
 
                 {/* Education & Experience */}
-                <Box p={2}>
-                    <Typography variant="h5" gutterBottom>Background</Typography>
+                <Box id="background" sx={{
+                    "& > *": {
+                        mt: '1rem',
+                    },
+                    py: 6
+                }}>
+                    <Typography variant="h5" gutterBottom sx={styles.heading}>Background</Typography>
                     <Grid container spacing={3} justifyContent="center" alignItems="center">
                         <Grid item xs={12} sm={6}>
-                            <Paper elevation={3} variant="outlined" sx={{ p: 2, height: '10rem' }}>
+                            <Paper elevation={3} variant="outlined" sx={{
+                                p: 2, height: '12rem', display: 'flex',
+                                justifyContent: 'space-between', alignItems: 'center', flexDirection: 'column'
+                            }}>
                                 <img src={background.education.logo} alt="Education" style={{ width: '100px', height: '100px', }} />
-                                <Typography variant="subtitle1">{background.education.title}</Typography>
+                                <Typography variant="subtitle1" sx={styles.heading}>{background.education.title}</Typography>
+                                <Typography variant="body2" sx={styles.normal}>{background.education.institution}</Typography>
                                 <Typography variant="body2">{background.education.period}</Typography>
-                                <Typography variant="body2">{background.education.institution}</Typography>
                             </Paper>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <Paper elevation={3} variant="outlined" sx={{ p: 2, height: '10rem' }}>
+                            <Paper elevation={3} variant="outlined" sx={{
+                                p: 2, height: '12rem', display: 'flex',
+                                justifyContent: 'space-between', alignItems: 'center', flexDirection: 'column'
+                            }}>
                                 <img src={background.experience.logo} alt="Experience" style={{ width: '100px', height: '100px', }} />
-                                <Typography variant="subtitle1">{background.experience.company}</Typography>
+                                <Typography variant="subtitle1" sx={styles.heading}>{background.experience.designation}</Typography>
+                                <Typography variant="subtitle1" sx={styles.normal}>{background.experience.company}</Typography>
                                 <Typography variant="body2">{background.experience.period}</Typography>
                             </Paper>
                         </Grid>
                     </Grid>
                 </Box>
 
-                <Divider sx={{ mt: 5 }} />
+                <Divider id="projects" sx={{ mt: 5 }} />
 
                 {/* Projects */}
-                <Box p={2} >
-                    <Typography variant="h5" gutterBottom>Projects</Typography>
+                <Box sx={{
+                    "& > *": {
+                        mt: '1rem',
+                    },
+                    py: 6
+                }}  >
+                    <Typography variant="h5" gutterBottom sx={styles.heading} >Projects</Typography>
                     <Grid container spacing={2} rowSpacing={5}>
                         {projects.map((project, index) => (
                             <Grid key={index} item xs={12} sm={6} md={4} lg={4}>
@@ -204,13 +250,72 @@ const Home = ({ data }: { data: JSONData }) => {
                     </Grid>
                 </Box>
 
-                <Divider sx={{ mt: 5 }} />
-                <Box p={2} >
-                    <Typography variant="h5" gutterBottom>Resume</Typography>
-                    <Typography variant="body1" gutterBottom>for complete details download my resume {}</Typography>
+                <Divider id="resume" sx={{ mt: 5 }} />
+                <Box p={2} sx={{
+                    "& > *": {
+                        margin: '1rem',
+                    },
+                }} >
+                    <Typography variant="h5" gutterBottom sx={styles.heading}>Resume</Typography>
+                    <Typography variant="body1" gutterBottom>For complete details download my resume { }</Typography>
+                    <DocumentScanner sx={{ width: '100px', height: '100px', }} />
+                    <br />
                     <Button variant="contained" color="primary" href={""} target="_blank" rel="noopener">
                         Download
                     </Button>
+                </Box>
+                <Divider id="contact" sx={{ mt: 5, }} />
+                <Box p={2} sx={{
+                    "& > *": {
+                        mt: '2rem',
+                        color: 'white',
+                    },
+                    backdropFilter: 'blur(8px)',
+                    background: "#4a403f",
+                    borderTopLeftRadius: '20px',
+                    borderTopRightRadius: '20px',
+                    position: "absolute",
+                    left: 0,
+                    right: 0
+                }} >
+                    <Typography variant="h5" sx={[styles.heading, { color: 'black', fontSize: 30 }]}>GET IN <span style={{ color: 'red' }}>TOUCH</span></Typography>
+
+                    <Email sx={{ width: 100, height: 100 }} />
+                    <Box sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}>
+                        <Typography variant="body1" gutterBottom sx={{
+                            textAlign: 'left',
+                            color: 'white',
+                        }}>
+                            <em>Need a developer? Want to contribute to projects? Want to hire me for any role?</em>
+                            <br />
+                            Feel free to contact me using the form below or by sending an email to <span style={{ fontWeight: 'bolder', fontStyle: 'italic' }}>{contact.gmail}</span>.
+                        </Typography>
+                    </Box>
+                    <form id='contact-form' onSubmit={handleMessageSubmit}>
+                        <Grid container spacing={2} justifyContent="center" alignItems="center">
+                            <Grid item xs={12} sm={4} md={4} lg={6}>
+                                <TextField name='firstname' id="outlined-basic" label="First Name" variant="outlined" fullWidth />
+                            </Grid>
+                            <Grid item xs={12} sm={4} md={4} lg={6}>
+                                <TextField id="outlined-basic" name='lastname' label="Last Name" variant="outlined" fullWidth />
+                            </Grid>
+                            <Grid item xs={12} sm={4} md={4} lg={12}>
+                                <TextField name='email' id="outlined-basic" label="Email" variant="outlined" fullWidth />
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                                <TextField name='message' multiline rows={4} id="outlined-basic" label="Message" variant="outlined" fullWidth />
+                            </Grid>
+                        </Grid>
+                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mt: 2 }}>
+                            <Button type='submit' fullWidth variant="contained" color="primary" href={""} target="_blank" rel="noopener">
+                                Submit
+                            </Button>
+                        </Box>
+                    </form>
                 </Box>
             </Box>
         </div>

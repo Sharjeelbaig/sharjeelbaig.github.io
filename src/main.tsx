@@ -12,7 +12,8 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import information from './utils/information.json'
 import './index.css'
-import { Box, CircularProgress } from '@mui/material';
+import { Box, CircularProgress, ThemeProvider } from '@mui/material';
+import theme from './utils/theme';
 
 
 const router = createBrowserRouter([
@@ -28,7 +29,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <CircularProgress />
       </Box>
     }>
+      <ThemeProvider theme={theme}>
     <RouterProvider router={router} />
+    </ThemeProvider>
     </Suspense>
   </React.StrictMode>,
 )
