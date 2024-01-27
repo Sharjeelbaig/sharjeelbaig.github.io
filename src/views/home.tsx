@@ -28,6 +28,7 @@ interface Background {
     };
     experience: {
         company: string;
+        designation: string;
         period: string;
         logo: string;
     };
@@ -84,7 +85,7 @@ const Home = ({ data }: { data: JSONData }) => {
         console.log('service ', import.meta.env.EMAILJS_SERVICE_ID)
     }, [])
 
-    const handleMessageSubmit = (e) => {
+    const handleMessageSubmit = (e: any) => {
         e.preventDefault();
         console.log('target ', e.target)
         emailjs.sendForm(import.meta.env.EMAILJS_SERVICE_ID, import.meta.env.EMAILJS_TEMPLATE_ID, '#contact-form', import.meta.env.EMAILJS_PUBLIC_KEY)
