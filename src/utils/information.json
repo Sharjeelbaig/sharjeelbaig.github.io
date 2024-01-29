@@ -52,7 +52,7 @@
     "background": {
         "education": {
             "title": "Bachelor of computer engineering",
-            "period": "2021 - 2027(expected)",
+            "period": "2021 - 2025(expected)",
             "institution": "Bahria University",
             "logo":"./assets/images/education/bahria.svg"
         },
@@ -101,5 +101,9 @@
             "repo-link": "https://github.com/Sharjeelbaig/Party-Chat",
             "classification": "Academic"
         }
-    ]
+    ],
+    "documents": {
+            "resume": "./assets/documents/Sharjeel Baig Resume.pdf"
+        }
+    
 }

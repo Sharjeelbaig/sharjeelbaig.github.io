@@ -58,12 +58,17 @@ interface DescriptionInfo {
     skills: Skill[];
 }
 
+interface Documents {
+    resume: string;
+}
+
 interface JSONData {
     basic: BasicInfo;
     contact: ContactInfo;
     description: DescriptionInfo;
     background: Background;
     projects: Project[];
+    documents: Documents;
 }
 
 const Home = ({ data }: { data: JSONData }) => {
@@ -82,17 +87,54 @@ const Home = ({ data }: { data: JSONData }) => {
     };
 
     useEffect(() => {
-        console.log('service ', import.meta.env.EMAILJS_SERVICE_ID)
+        console.clear();
+        console.log(` 
+         ______
+        / ____ \\
+       / /    \\ \\
+ _____/ /______\\ \\_____
+/______________________\\
+|                      |
+|                      |
+|         </>          |
+|                      |
+|______________________|
+        Hire Me
+|______________________|        
+
+
+------------------------
+Use contact form or email me at ${contact.gmail}
+
+`)
+
+console.log = function() {};
+console.warn = function() {};
+console.error = function() {};
+console.debug = function() {};
+console.info = function() {};
+console.assert = function() {};
+console.clear = function() {};
+console.count = function() {};
+console.dir = function() {};
+console.dirxml = function() {};
+console.group = function() {};
+console.groupCollapsed = function() {};
+console.groupEnd = function() {};
+console.table = function() {};
+console.time = function() {};
+console.timeEnd = function() {};
+console.timeStamp = function() {};
+console.trace = function() {};
     }, [])
 
     const handleMessageSubmit = (e: any) => {
         e.preventDefault();
-        console.log('target ', e.target)
         emailjs.sendForm(import.meta.env.EMAILJS_SERVICE_ID, import.meta.env.EMAILJS_TEMPLATE_ID, '#contact-form', import.meta.env.EMAILJS_PUBLIC_KEY)
-            .then((result) => {
-                console.log('Email sent successfully:', result.text);
-            }, (error) => {
-                console.error('Error sending email:', error.text);
+            .then(() => {
+                alert('Email sent successfully');
+            }, () => {
+                alert('Error sending email');
             });
         e.target.reset();
     };
@@ -261,7 +303,7 @@ const Home = ({ data }: { data: JSONData }) => {
                     <Typography variant="body1" gutterBottom>For complete details download my resume { }</Typography>
                     <DocumentScanner sx={{ width: '100px', height: '100px', }} />
                     <br />
-                    <Button variant="contained" color="primary" href={""} target="_blank" rel="noopener">
+                    <Button variant="contained" color="primary" href={data.documents.resume} target="_blank" rel="noopener">
                         Download
                     </Button>
                 </Box>
