@@ -47,6 +47,122 @@
                 "logo": "./assets/images/skills/reactnative.svg",
                 "name": "React Native"
             }
+        ],
+        "weakSkills": [
+            {
+                "logo": "./assets/images/weak_skills/python.svg",
+                "name": "Python"
+            },
+            {
+                "logo": "./assets/images/weak_skills/java.svg",
+                "name": "Java"
+            },
+            {
+                "logo": "./assets/images/weak_skills/csharp.svg",
+                "name": "C#"
+            },
+            {
+                "logo": "./assets/images/weak_skills/cplusplus.svg",
+                "name": "C++"
+            },
+            {
+                "logo": "./assets/images/weak_skills/aspnet.svg",
+                "name": "ASP.NET"
+            },
+            {
+                "logo": "./assets/images/weak_skills/pygame.svg",
+                "name": "Pygame"
+            },
+            {
+                "logo": "./assets/images/weak_skills/jframe.svg",
+                "name": "JFrame"
+            },
+            {
+                "logo": "./assets/images/weak_skills/msaccess.svg",
+                "name": "MS-Access"
+            }
+        ],
+        "additionalSkills": [
+            {
+                "logo": "./assets/images/additional_skills/html.svg",
+                "name": "HTML"
+            },
+            {
+                "logo": "./assets/images/additional_skills/css.svg",
+                "name": "Css"
+            },
+            {
+                "logo": "./assets/images/additional_skills/jquery.svg",
+                "name": "Jquery"
+            },
+            {
+                "logo": "./assets/images/additional_skills/expo.svg",
+                "name": "Expo"
+            },
+            {
+                "logo": "./assets/images/additional_skills/mui.svg",
+                "name": "Material-UI"
+            },
+            {
+                "logo": "./assets/images/additional_skills/firebase.svg",
+                "name": "Firebase"
+            },
+            {
+                "logo": "./assets/images/additional_skills/redux.svg",
+                "name": "Redux"
+            },
+            {
+                "logo": "./assets/images/additional_skills/axios.svg",
+                "name": "Axios"
+            },
+            {
+                "logo": "./assets/images/additional_skills/azure.svg",
+                "name": "Azure"
+            },
+            {
+                "logo": "./assets/images/additional_skills/railway.svg",
+                "name": "Railway"
+            },
+            {
+                "logo": "./assets/images/additional_skills/bash.svg",
+                "name": "Bash"
+            },
+            {
+                "logo": "./assets/images/additional_skills/nativebase.svg",
+                "name": "Native Base"
+            },
+            {
+                "logo": "./assets/images/additional_skills/react_navigation.svg",
+                "name": "React Navigation"
+            },
+            {
+                "logo": "./assets/images/additional_skills/react_router_dom.svg",
+                "name": "React Router Dom"
+            },
+            {
+                "logo": "./assets/images/additional_skills/framer_motion.svg",
+                "name": "Framer Motion"
+            },
+            {
+                "logo": "./assets/images/additional_skills/cohere_api.svg",
+                "name": "Cohere-Ai API"
+            },
+            {
+                "logo": "./assets/images/additional_skills/open_ai_api.svg",
+                "name": "Open-Ai API"
+            },
+            {
+                "logo": "./assets/images/additional_skills/react_hook_form.svg",
+                "name": "React Hook Form"
+            },
+            {
+                "logo": "./assets/images/additional_skills/tailwind.svg",
+                "name": "Tailwind"
+            },
+            {
+                "logo": "./assets/images/additional_skills/vite.svg",
+                "name": "Vite"
+            }
         ]
     },
     "background": {

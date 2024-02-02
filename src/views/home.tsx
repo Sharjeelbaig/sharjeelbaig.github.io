@@ -1,14 +1,14 @@
-import { Grid, Paper, Typography, Avatar, Box, Button, Divider, TextField } from '@mui/material';
+import { Grid, Paper, Typography, Avatar, Box, Button, Divider, TextField, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import PhoneIcon from '@mui/icons-material/Phone';
-import { DocumentScanner, Email, Place, X } from '@mui/icons-material';
+import { ArrowDownward, ArrowDropDown, ArrowDropDownSharp, ArrowDropDownTwoTone, DocumentScanner, Email, KeyboardArrowDown, KeyboardArrowUp, Place, X } from '@mui/icons-material';
 import Header from '../components/header/Header';
 import { useTheme } from '@mui/material';
 import emailjs from '@emailjs/browser';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface Project {
     title: string;
@@ -39,6 +39,16 @@ interface Skill {
     name: string;
 }
 
+interface WeakSkill {
+    logo: string;
+    name: string;
+}
+
+interface AdditionalSkill {
+    logo: string;
+    name: string;
+}
+
 interface BasicInfo {
     name: string;
     designation: string;
@@ -56,6 +66,8 @@ interface ContactInfo {
 interface DescriptionInfo {
     about: string;
     skills: Skill[];
+    weakSkills: WeakSkill[];
+    additionalSkills: AdditionalSkill[];
 }
 
 interface Documents {
@@ -74,6 +86,7 @@ interface JSONData {
 const Home = ({ data }: { data: JSONData }) => {
     const theme = useTheme();
     const { basic, contact, description, background, projects } = data;
+    const [showMoreSkills, setShowMoreSkills] = useState(false)
     const styles = {
         heading: {
             color: theme.palette.primary.main,
@@ -108,24 +121,24 @@ Use contact form or email me at ${contact.gmail}
 
 `)
 
-console.log = function() {};
-console.warn = function() {};
-console.error = function() {};
-console.debug = function() {};
-console.info = function() {};
-console.assert = function() {};
-console.clear = function() {};
-console.count = function() {};
-console.dir = function() {};
-console.dirxml = function() {};
-console.group = function() {};
-console.groupCollapsed = function() {};
-console.groupEnd = function() {};
-console.table = function() {};
-console.time = function() {};
-console.timeEnd = function() {};
-console.timeStamp = function() {};
-console.trace = function() {};
+        console.log = function () { };
+        console.warn = function () { };
+        console.error = function () { };
+        console.debug = function () { };
+        console.info = function () { };
+        console.assert = function () { };
+        console.clear = function () { };
+        console.count = function () { };
+        console.dir = function () { };
+        console.dirxml = function () { };
+        console.group = function () { };
+        console.groupCollapsed = function () { };
+        console.groupEnd = function () { };
+        console.table = function () { };
+        console.time = function () { };
+        console.timeEnd = function () { };
+        console.timeStamp = function () { };
+        console.trace = function () { };
     }, [])
 
     const handleMessageSubmit = (e: any) => {
@@ -205,7 +218,7 @@ console.trace = function() {};
                     "& > *": {
                         mt: '0.1rem',
                     },
-                    py: 6
+                    pt: 6,
                 }} >
                     <Typography variant="h5" gutterBottom sx={styles.heading}>Skills</Typography>
                     <Grid container spacing={2} justifyContent="center" alignItems="center">
@@ -218,6 +231,56 @@ console.trace = function() {};
                             </Grid>
                         ))}
                     </Grid>
+                    <Accordion expanded={showMoreSkills} onChange={() => setShowMoreSkills(!showMoreSkills)} sx={{ position: 'unset', boxShadow: 'none', my: 5, width: '100%' }}>
+                        <AccordionSummary
+                            aria-controls="panel1-content"
+                            id="panel1-header"
+                        >
+
+                            <Typography sx={{ textAlign: 'center', margin: 'auto', display: 'flex', alignItems: 'center' }}>{!showMoreSkills ? <>show more <KeyboardArrowDown /></>  : <>show less <KeyboardArrowUp /></> }</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <Divider />
+                            <Box sx={{
+                                "& > *": {
+                                    mt: '0.1rem',
+                                },
+                                pt: 6,
+                            }} >
+                                <Typography variant="h5" gutterBottom sx={styles.heading}>Additional Skills</Typography>
+                                <Grid container spacing={2} justifyContent="center" alignItems="center">
+                                    {description.additionalSkills.map((skill, index) => (
+                                        <Grid key={index} item xs={6} sm={4} md={4} lg={3}>
+                                            <Paper elevation={3} variant="outlined" sx={{ p: 2, textAlign: 'center', borderRadius: '20px' }}>
+                                                <img src={skill.logo} alt={skill.name} style={{ width: '50px', height: '50px' }} />
+                                                <Typography variant="body2">{skill.name}</Typography>
+                                            </Paper>
+                                        </Grid>
+                                    ))}
+                                </Grid>
+                            </Box>
+                            <Divider sx={{ mt: 5 }} />
+                            <Box sx={{
+                                "& > *": {
+                                    mt: '0.1rem',
+                                },
+                                pt: 6,
+                            }} >
+                                <Typography variant="h5" gutterBottom sx={styles.heading}>Weak skills / Areas for growth</Typography>
+                                <Grid container spacing={2} justifyContent="center" alignItems="center">
+                                    {description.weakSkills.map((skill, index) => (
+                                        <Grid key={index} item xs={6} sm={4} md={4} lg={3}>
+                                            <Paper elevation={3} variant="outlined" sx={{ p: 2, textAlign: 'center', borderRadius: '20px' }}>
+                                                <img src={skill.logo} alt={skill.name} style={{ width: '50px', height: '50px' }} />
+                                                <Typography variant="body2">{skill.name}</Typography>
+                                            </Paper>
+                                        </Grid>
+                                    ))}
+                                </Grid>
+                            </Box>
+                        </AccordionDetails>
+                    </Accordion>
+
                 </Box>
 
                 <Divider sx={{ mt: 5 }} />
