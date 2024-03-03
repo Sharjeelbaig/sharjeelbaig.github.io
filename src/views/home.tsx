@@ -3,7 +3,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import PhoneIcon from '@mui/icons-material/Phone';
-import { ArrowDownward, ArrowDropDown, ArrowDropDownSharp, ArrowDropDownTwoTone, DocumentScanner, Email, KeyboardArrowDown, KeyboardArrowUp, Place, X } from '@mui/icons-material';
+import { DocumentScanner, Email, KeyboardArrowDown, KeyboardArrowUp, Place, X } from '@mui/icons-material';
 import Header from '../components/header/Header';
 import { useTheme } from '@mui/material';
 import emailjs from '@emailjs/browser';
